@@ -85,12 +85,6 @@ public class PetStoreSteps {
                 .response();
 
     }
-
-    @Когда("статус код {int}")
-    public void verifyStatusCode(int expectedStatusCode) {
-        int actualStatusCode = response.getStatusCode();
-        Assert.assertEquals("Unexpected status code", expectedStatusCode, actualStatusCode);
-    }
 }
 
 
