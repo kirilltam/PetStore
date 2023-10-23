@@ -4,25 +4,72 @@
 Функциональность: Создание питомца
 
   Сценарий: Создать питомца
-    * POST запрос https://petstore.swagger.io/v2/pet
-      | field     | value                          |
+    * POST запрос /pet
+
       | id        | 25                             |
-      | category  | {"id": 4, "name": "Mailo"}     |
-      | name      | doggie                         |
+      | category  | {"id": 4, "name": "Dog"}     |
+      | name      | Mailo                       |
       | photoUrls | ["string"]                     |
       | tags      | [{"id": 4, "name": "chachao"}] |
       | status    | available                      |
-
-
+    * код ответа 200
 
 
   Сценарий: Создать питомца с невалидными данными ошибка 405
-    * POST запрос https://petstore.swagger.io/v2/pet
-      | field     | value                          |
-      | id        | invalid                        |
-      | category  | {"id": 4, "name": "Mailo"}     |
-      | name      | 2                              |
-      | photoUrls | ["string"]                     |
-      | tags      | [{"id": 4, "name": "chachao"}] |
-      | status    | available                      |
+    * POST запрос /pet
 
+      | id        | invaliddddddddddddddddddddddddddddddddddddddddddd                      |
+      | category  | {"4dwfwdwd4": 4xzcC, "456dsfadsf": "Mai5xcvxcv6"}                      |
+      | name      | 2xczvcxvxv22222                                                        |
+      | photoUrls | ["strzxcbvcbvcning"]                                                   |
+      | tags      | [{"wewrwerewrewrewrwerwerweer": re, "123": "123                    "}] |
+      | status    | 123                                                                    |
+
+  Сценарий: Создать питомца со значениями null
+    * POST запрос /pet
+
+      | id        |                  |
+      | category  | {"": , "": ""}   |
+      | name      |                  |
+      | photoUrls | [""]             |
+      | tags      | [{"": , "": ""}] |
+      | status    |                  |
+
+  Сценарий: Создание заказ на питомца
+    * POST запрос /store/order
+
+      |   id     |  56                          |
+      | petId    | 9                            |
+      | quantity | 1                            |
+      | shipDate | 2023-10-17T17:10:40.558+0000 |
+      | status   | placed                       |
+      | complete | true                         |
+    * код ответа 200
+
+  Сценарий: Создание заказа на питомца c некорректными данными
+    * POST запрос /store/order
+      |   id     |  56                                  |
+      | petId    | asdasd                               |
+      | quantity |          ddsd                        |
+      | shipDate | 2023-10-dfdf17T17:10:40.5dfdf58+0000 |
+      | status   | 123123123123                         |
+      | complete |                                      |
+    * код ответа 500
+
+
+  Сценарий: Создание заказа на питомца со значнениями null
+    * POST запрос /store/order
+
+      |   id     |                                      |
+      | petId    |                                      |
+      | quantity |                                      |
+      | shipDate |                                      |
+      | status   |                                      |
+      | complete |                                      |
+
+
+  Сценарий: Обновить данные питомца
+    * POST запрос /store/pet/55
+    | id | 55 |
+    | name | doggie |
+    | status | available |

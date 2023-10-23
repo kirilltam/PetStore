@@ -11,7 +11,7 @@ public class BaseClass {
     public static Response response;
     public static List list;
     public static RequestSpecification baseRequest = new RequestSpecBuilder().
-            setBaseUri("https://petstore.swagger.io/v2/").
+            setBaseUri("https://petstore.swagger.io/v2").
             log(LogDetail.ALL).
             build();
 
