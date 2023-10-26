@@ -7,12 +7,11 @@
     * POST запрос /pet
 
       | id        | 25                             |
-      | category  | {"id": 4, "name": "Dog"}     |
-      | name      | Mailo                       |
+      | category  | {"id": 4, "name": "Dog"}       |
+      | name      | Mailo                          |
       | photoUrls | ["string"]                     |
       | tags      | [{"id": 4, "name": "chachao"}] |
       | status    | available                      |
-    * код ответа 200
 
 
   Сценарий: Создать питомца с невалидными данными ошибка 405
@@ -38,7 +37,7 @@
   Сценарий: Создание заказ на питомца
     * POST запрос /store/order
 
-      |   id     |  56                          |
+      | id       | 56                           |
       | petId    | 9                            |
       | quantity | 1                            |
       | shipDate | 2023-10-17T17:10:40.558+0000 |
@@ -48,9 +47,9 @@
 
   Сценарий: Создание заказа на питомца c некорректными данными
     * POST запрос /store/order
-      |   id     |  56                                  |
+      | id       | 56                                   |
       | petId    | asdasd                               |
-      | quantity |          ddsd                        |
+      | quantity | ddsd                                 |
       | shipDate | 2023-10-dfdf17T17:10:40.5dfdf58+0000 |
       | status   | 123123123123                         |
       | complete |                                      |
@@ -60,16 +59,35 @@
   Сценарий: Создание заказа на питомца со значнениями null
     * POST запрос /store/order
 
-      |   id     |                                      |
-      | petId    |                                      |
-      | quantity |                                      |
-      | shipDate |                                      |
-      | status   |                                      |
-      | complete |                                      |
+      | id       |  |
+      | petId    |  |
+      | quantity |  |
+      | shipDate |  |
+      | status   |  |
+      | complete |  |
 
 
   Сценарий: Обновить данные питомца
     * POST запрос /store/pet/55
-    | id | 55 |
-    | name | doggie |
-    | status | available |
+      | id     | 55        |
+      | name   | doggie    |
+      | status | available |
+
+
+  Сценарий: Обновить данные питомца c невалидными данными
+    * POST запрос /store/pet/55
+      | id     | qwe     |
+      | name   | 123     |
+      | status | 4567678 |
+    * код ответа 404
+
+  Сценарий: Обновить данные питомца c пустыми данными
+    * POST запрос /store/pet/55
+      | id     |  |
+      | name   |  |
+      | status |  |
+    * код ответа 404
+
+
+
+

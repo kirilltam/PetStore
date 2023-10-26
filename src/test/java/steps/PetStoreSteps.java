@@ -14,10 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static steps.BaseClass.baseRequest;
-import static steps.BaseClass.response;
 
-public class PetStoreSteps {
+public class PetStoreSteps extends BaseClass {
 
 
     @Когда("^GET запрос (.*)$")
@@ -51,19 +49,14 @@ public class PetStoreSteps {
         }
     }
 
-    //метод получения списка Json для переиспользования
-    public static List<Root> checkList() {
-        return given(baseRequest)
+    @Когда("^Проверка всех полей в статусе (.*)$")
+    public void CheckList(String url) {
+        List<Root> root = given(RequestStatus)
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/findByStatus?status=available")
+                .get(url)
                 .then().log().all()
                 .extract().body().jsonPath().getList(".", Root.class);
-    }
-
-    @Когда("^Проверка всех полей на соответствия типу данных$")
-    public void Check() {
-        List<Root> root = PetStoreSteps.checkList();
         root.stream().map(Root::getId).forEach(id -> Assert.assertTrue("У id должен быть тип Long", id instanceof Long));
         root.stream().map(Root::getName).forEach(name -> Assert.assertTrue("У name должен быть тип String", name instanceof String));
         root.stream().map(Root::getCategory).forEach(category -> {
@@ -82,13 +75,29 @@ public class PetStoreSteps {
             });
         });
         root.stream().map(Root::getStatus).forEach(status -> Assert.assertTrue("У статус должен быть тип String", status instanceof String));
-
+        root.stream().map(Root::getId).forEach(id -> Assert.assertNotNull("id не может быть пустым", id));
+        root.stream().map(Root::getName).forEach(name -> Assert.assertNotNull(" name не может быть пустым", name));
+        root.stream().map(Root::getCategory).forEach(category -> {
+            Assert.assertNotNull("У category должен быть тип Category", category);
+            Assert.assertNotNull("Значение поля id в category не может быть пустым", category.getId());
+            Assert.assertNotNull("Значение поля name в category не может быть пустым", category.getName());
+        });
+        root.stream().map(Root::getPhotoUrls).forEach(photo -> Assert.assertNotNull("У PhotoUrls не может быть пустым", photo));
+        root.stream().map(Root::getTags).forEach(tags -> {
+            Assert.assertNotNull("tags не может быть пустым", tags);
+            tags.forEach(tag -> {
+                Assert.assertNotNull("Значение поля id в tag не может быть пустым", tag.getId());
+                Assert.assertNotNull("Значение поля name в tag не может быть пустым", tag.getName());
+            });
+        });
+        root.stream().map(Root::getStatus).forEach(status -> Assert.assertTrue("У статус должен быть тип String", status instanceof String));
     }
 
+
     @Когда("^POST запрос (.*)$")
-    public void PostPet(String url, DataTable bodyData) {
+    public void PostPet(String url, DataTable bodyJson) {
         RequestSpecification request = given(baseRequest);
-        Map bodyMap = bodyData.asMap(String.class, String.class);
+        Map bodyMap = bodyJson.asMap(String.class, String.class);
         response = request.given().
                 accept("*/*").
                 contentType("application/json")
@@ -98,8 +107,21 @@ public class PetStoreSteps {
                 .then()
                 .extract()
                 .response();
-        String responseBody = response.getBody().asString();
-        System.out.println(responseBody);
+
+
+    }
+
+    @Когда("^Удалить  (.*)$")
+    public void Delete(String url) {
+        RequestSpecification request = given(baseRequest);
+        response = request.given().
+                accept("*/*").
+                contentType("application/json")
+                .when()
+                .delete(url)
+                .then()
+                .extract()
+                .response();
 
     }
 }
