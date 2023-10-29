@@ -1,4 +1,4 @@
-package steps;
+package APIsteps;
 
 
 import io.cucumber.datatable.DataTable;
@@ -6,9 +6,9 @@ import io.cucumber.java.ru.Когда;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
-import pojo.Category;
-import pojo.Root;
-import pojo.Tag;
+import pojoClass.Category;
+import pojoClass.Root;
+import pojoClass.Tag;
 
 import java.util.List;
 import java.util.Map;

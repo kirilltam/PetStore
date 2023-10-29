@@ -1,4 +1,4 @@
-package pojo;
+package pojoClass;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package steps;
+package UIsteps;
 
 import WebHooks.WebHooks;
 import io.cucumber.java.ru.Когда;

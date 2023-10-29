@@ -1,9 +1,7 @@
-package steps;
+package UIsteps;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.cucumber.java.ru.Когда;
 
 import static com.codeborne.selenide.Selenide.$x;
 

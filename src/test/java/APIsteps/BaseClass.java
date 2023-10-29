@@ -1,11 +1,9 @@
-package steps;
+package APIsteps;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pojo.Root;
 
 import java.util.List;
 
