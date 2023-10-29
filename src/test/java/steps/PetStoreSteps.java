@@ -122,8 +122,25 @@ public class PetStoreSteps extends BaseClass {
                 .then()
                 .extract()
                 .response();
+    }
+    @Когда("^Delete удалить заказать (.*)$")
+    public void DeleteOrderPet(String url, DataTable bodyJson) {
+        RequestSpecification request = given(baseRequest);
+        Map bodyMap = bodyJson.asMap(String.class, String.class);
+        response = request.given().
+                accept("*/*").
+                contentType("application/json")
+                .body(bodyMap)
+                .when()
+                .delete(url)
+                .then()
+                .extract()
+                .response();
+
 
     }
+
+
 }
 
 

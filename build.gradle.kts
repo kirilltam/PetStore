@@ -1,3 +1,5 @@
+import org.codehaus.groovy.tools.shell.util.Logger.io
+
 plugins {
     id("java")
 
@@ -18,10 +20,15 @@ dependencies {
     testImplementation ("io.cucumber:cucumber-java:6.10.4")
     testImplementation ("io.cucumber:cucumber-junit:6.10.4")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
+    implementation("io.github.bonigarcia:webdrivermanager:5.5.3")
+    testImplementation ("com.codeborne:selenide:6.17.0")
 
+    testImplementation("org.testng:testng:7.1.0")
+    testImplementation("org.testng:testng:7.1.0")
 
 
 }
+
 
 tasks.test {
     useJUnitPlatform()

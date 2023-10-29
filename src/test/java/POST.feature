@@ -6,12 +6,13 @@
   Сценарий: Создать питомца
     * POST запрос /pet
 
-      | id        | 25                             |
-      | category  | {"id": 4, "name": "Dog"}       |
+      | id        | 345                            |
+      | category  | {"id": 4, "dog": "string"}     |
       | name      | Mailo                          |
       | photoUrls | ["string"]                     |
-      | tags      | [{"id": 4, "name": "chachao"}] |
+      | tags      | [{"id": 23, "name": "string"}] |
       | status    | available                      |
+    * код ответа 200
 
 
   Сценарий: Создать питомца с невалидными данными ошибка 405
@@ -41,7 +42,7 @@
       | petId    | 9                            |
       | quantity | 1                            |
       | shipDate | 2023-10-17T17:10:40.558+0000 |
-      | status   | placed                       |
+      | status   | "placed"                     |
       | complete | true                         |
     * код ответа 200
 
@@ -69,7 +70,7 @@
 
   Сценарий: Обновить данные питомца
     * POST запрос /store/pet/55
-      | id     | 55        |
+      | id     | 345       |
       | name   | doggie    |
       | status | available |
 
