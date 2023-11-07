@@ -1,7 +1,8 @@
-package UIsteps;
+package steps.ui;
 
-import WebHooks.WebHooks;
+
 import io.cucumber.java.ru.Когда;
+import hooks.WebHooks;
 
 
 public class TestUI extends WebHooks {

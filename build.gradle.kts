@@ -1,4 +1,5 @@
 import org.codehaus.groovy.tools.shell.util.Logger.io
+import java.util.regex.Pattern.compile
 
 plugins {
     id("java")
@@ -22,9 +23,11 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
     implementation("io.github.bonigarcia:webdrivermanager:5.5.3")
     testImplementation ("com.codeborne:selenide:6.17.0")
+    implementation("net.masterthought:cucumber-reporting:5.7.7")
+    testImplementation("org.testng:testng:7.1.0")
+    testImplementation("org.testng:testng:7.1.0")
 
-    testImplementation("org.testng:testng:7.1.0")
-    testImplementation("org.testng:testng:7.1.0")
+    compile ("com.epam.reportportal:agent-java-cucumber6:5.0.5")
 
 
 }

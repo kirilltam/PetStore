@@ -1,4 +1,4 @@
-package WebHooks;
+package hooks;
 
 
 import com.codeborne.selenide.Configuration;
@@ -18,6 +18,7 @@ public class WebHooks {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
+
     }
 
     @Before
@@ -27,6 +28,7 @@ public class WebHooks {
 
     @After
     public void tearDown() {
+
         Selenide.closeWebDriver();
     }
 

@@ -1,10 +1,10 @@
-package pojoClass;
+package pojo;
 
-public class Category {
+public class Tag {
     private Long id;
     private String name;
 
-    public Category() {
+    public Tag() {
     }
 
     public Long getId() {

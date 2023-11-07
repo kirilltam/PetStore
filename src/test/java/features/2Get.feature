@@ -1,8 +1,7 @@
 # encoding: UTF-8
 # language: ru
 
-Функциональность:
-
+Функциональность: Проверка списка животных
 
   Сценарий: Получение списка животных со статусом available
     * GET запрос /pet/findByStatus/?status=available

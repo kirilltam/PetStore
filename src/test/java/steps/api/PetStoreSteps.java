@@ -1,4 +1,4 @@
-package APIsteps;
+package steps.api;
 
 
 import io.cucumber.datatable.DataTable;
@@ -6,9 +6,9 @@ import io.cucumber.java.ru.Когда;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
-import pojoClass.Category;
-import pojoClass.Root;
-import pojoClass.Tag;
+import pojo.Category;
+import pojo.Root;
+import pojo.Tag;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class PetStoreSteps extends BaseClass {
 
 
     @Когда("^GET запрос (.*)$")
-    public void sendGet(String url) {
+    public void sendGet (String url) {
         RequestSpecification request = given(baseRequest);
         response = request.given().
                 accept("*/*").
@@ -30,6 +30,8 @@ public class PetStoreSteps extends BaseClass {
                 .extract()
                 .response();
     }
+
+
 
     @Когда("^код ответа (.*)$")
     public void statusCode(int expectedCode) {
@@ -50,7 +52,7 @@ public class PetStoreSteps extends BaseClass {
     }
 
     @Когда("^Проверка всех полей в статусе (.*)$")
-    public void CheckList(String url) {
+    public void CheckListTtT(String url) {
         List<Root> root = given(RequestStatus)
                 .contentType(ContentType.JSON)
                 .when()
